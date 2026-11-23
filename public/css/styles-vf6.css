@@ -1,0 +1,41 @@
+﻿/*   body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background: #1d2024;            /* nền xám đậm như mặt đường */
+  /*   font-family: system-ui, sans-serif;
+    color: #f2f2f2;
+  } */ */
+  .wrap { text-align: center; padding: 24px; }
+  h1 { font-size: 1.6rem; margin: 0 0 8px; }
+  p  { margin: 0 0 28px; color: #b8bcc2; }
+
+  /* Khung chứa ảnh: perspective tạo chiều sâu 3D */
+  .card {
+    width: min(90vw, 760px);
+    margin: 0 auto;
+    perspective: 900px;
+  }
+  /* Phần tử sẽ nghiêng theo chuột */
+  .tilt {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: transform .15s ease-out, box-shadow .15s;   /* nghiêng mượt */
+    box-shadow: 0 10px 30px rgba(0,0,0,.45);
+  }
+  .tilt img { display: block; width: 100%; height: auto; }
+
+  /* Lớp ánh sáng loá chạy theo chuột */
+  .glare {
+    position: absolute; inset: 0;
+    pointer-events: none;           /* để chuột xuyên qua lớp này */
+    opacity: 0;
+    transition: opacity .2s;
+    background: radial-gradient(circle at var(--mx, 50%) var(--my, 50%),
+                rgba(255,255,255,.35), transparent 45%);
+  }
+  .tilt:hover .glare, .tilt.chay .glare { opacity: 1; }
+  .tilt:hover { box-shadow: 0 24px 50px rgba(0,0,0,.6); }
